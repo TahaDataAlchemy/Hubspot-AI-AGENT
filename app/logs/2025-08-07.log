@@ -1,0 +1,54 @@
+{"level": "INFO", "time": "2025-08-07T01:27:58Z", "msg": "FastCrate logger initialized", "module": "logger"}
+{"level": "INFO", "time": "2025-08-07T02:10:10Z", "msg": "FastCrate logger initialized", "module": "logger"}
+{"level": "INFO", "time": "2025-08-07T02:11:18Z", "msg": "FastCrate logger initialized", "module": "logger"}
+{"level": "INFO", "time": "2025-08-07T02:12:53Z", "msg": "FastCrate logger initialized", "module": "logger"}
+{"level": "INFO", "time": "2025-08-07T02:14:10Z", "msg": "GET - / - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:14:43Z", "msg": "GET - /api/v1/healthcheck - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:15:08Z", "msg": "Authorizing User", "module": "routes"}
+{"level": "INFO", "time": "2025-08-07T02:18:17Z", "msg": "FastCrate logger initialized", "module": "logger"}
+{"level": "INFO", "time": "2025-08-07T02:18:21Z", "msg": "Authorizing User", "module": "routes"}
+{"level": "INFO", "time": "2025-08-07T02:18:21Z", "msg": "GET - /api/v1/auth/authorize_user - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:20:08Z", "msg": "FastCrate logger initialized", "module": "logger"}
+{"level": "INFO", "time": "2025-08-07T02:20:44Z", "msg": "Authorizing User", "module": "routes"}
+{"level": "INFO", "time": "2025-08-07T02:20:44Z", "msg": "GET - /api/v1/auth/authorize_user - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:21:43Z", "msg": "GET - /auth/callback - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:21:43Z", "msg": "GET - /favicon.ico - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:22:29Z", "msg": "GET - /auth/callback - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:23:27Z", "msg": "FastCrate logger initialized", "module": "logger"}
+{"level": "INFO", "time": "2025-08-07T02:23:30Z", "msg": "Authorizing User", "module": "routes"}
+{"level": "INFO", "time": "2025-08-07T02:23:30Z", "msg": "GET - /api/v1/auth/authorize_user - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:23:36Z", "msg": "GET - /auth/callback - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:31:30Z", "msg": "FastCrate logger initialized", "module": "logger"}
+{"level": "INFO", "time": "2025-08-07T02:31:36Z", "msg": "GET - /auth/callback - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:31:39Z", "msg": "GET - /auth/callback - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:32:03Z", "msg": "Authorizing User", "module": "routes"}
+{"level": "INFO", "time": "2025-08-07T02:32:03Z", "msg": "GET - /api/v1/auth/authorize_user - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:32:10Z", "msg": "GET - /auth/callback - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:36:34Z", "msg": "GET - /auth/callback - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:36:57Z", "msg": "GET - /api/v1/healthcheck - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:37:15Z", "msg": "Authorizing User", "module": "routes"}
+{"level": "INFO", "time": "2025-08-07T02:37:15Z", "msg": "GET - /api/v1/auth/authorize_user - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:39:15Z", "msg": "FastCrate logger initialized", "module": "logger"}
+{"level": "INFO", "time": "2025-08-07T02:39:26Z", "msg": "Authorizing User", "module": "routes"}
+{"level": "INFO", "time": "2025-08-07T02:39:26Z", "msg": "GET - /api/v1/auth/authorize_user - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:46:05Z", "msg": "FastCrate logger initialized", "module": "logger"}
+{"level": "INFO", "time": "2025-08-07T02:46:38Z", "msg": "GET - /auth/authorize_user - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:47:27Z", "msg": "GET - /auth/authorize_user - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:47:38Z", "msg": "FastCrate logger initialized", "module": "logger"}
+{"level": "INFO", "time": "2025-08-07T02:47:48Z", "msg": "FastCrate logger initialized", "module": "logger"}
+{"level": "INFO", "time": "2025-08-07T02:47:52Z", "msg": "Authorizing User", "module": "routes"}
+{"level": "INFO", "time": "2025-08-07T02:47:52Z", "msg": "GET - /auth/authorize_user - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:47:59Z", "msg": "User Authorized", "module": "routes"}
+{"level": "INFO", "time": "2025-08-07T02:47:59Z", "msg": "GET - /auth/callback - 0.56 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:48:12Z", "msg": "FastCrate logger initialized", "module": "logger"}
+{"level": "INFO", "time": "2025-08-07T02:48:59Z", "msg": "GET - /api/v1/logs - 0.19 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:49:00Z", "msg": "GET - /api/v1/logs/data - 0.03 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:49:05Z", "msg": "GET - /api/v1/logs/data - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:49:08Z", "msg": "GET - /api/v1/logs/data - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:49:11Z", "msg": "GET - /api/v1/logs/data - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:49:19Z", "msg": "GET - /api/v1/logs/data - 0.03 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:50:07Z", "msg": "FastCrate logger initialized", "module": "logger"}
+{"level": "INFO", "time": "2025-08-07T02:50:10Z", "msg": "GET - /api/v1/logs/data - 0.03 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:50:27Z", "msg": "GET - /api/v1/healthcheck - 0.00 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:50:34Z", "msg": "GET - /api/v1/logs/data - 0.02 s 🚀", "module": "middleware"}
+{"level": "INFO", "time": "2025-08-07T02:50:37Z", "msg": "GET - /api/v1/logs/data - 0.00 s 🚀", "module": "middleware"}
