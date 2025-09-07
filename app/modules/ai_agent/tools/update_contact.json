@@ -1,0 +1,25 @@
+{
+    "type": "function",
+    "function": {
+        "name": "update_contact",
+        "description": "Update a contact in the CRM with the provided details.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "contact_id": {
+                    "type": "string",
+                    "description": "The unique HubSpot contact ID to update."
+                },
+                "email": {
+                    "type": "string",
+                    "description": "The contact's email address. Must be provided by the user, never generated."
+                },
+                "firstname": { "type": "string", "description": "The contact's first name" },
+                "lastname": { "type": "string", "description": "The contact's last name" },
+                "phone": { "type": "string", "description": "The contact's phone number" },
+                "company": { "type": "string", "description": "The contact's company name" }
+            },
+            "required": ["contact_id"]
+        }
+    }
+}

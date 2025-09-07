@@ -1,0 +1,21 @@
+{
+    "type": "function",
+    "function": {
+        "name": "create_contact",
+        "description": "Create a contact in the CRM from provided details.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "The email of contact. Must be provided by the user, never generated."
+                },
+                "first_name": { "type": "string", "description": "The contact's first name" },
+                "last_name": { "type": "string", "description": "The contact's last name" },
+                "phone": { "type": "string", "description": "Phone number" },
+                "company": { "type": "string", "description": "Company name" }
+            },
+            "required": ["email"]
+        }
+    }
+}
