@@ -1,0 +1,17 @@
+{
+    "type":"function",
+    "function":{
+        "name":"delete_contact",
+        "description":"Delete a contact from the CRM by providing the contact id",
+        "parameters":{
+            "type":"object",
+            "properties":{
+                "contact_id":{
+                    "type":"string",
+                    "description":"The id of the contact to delete"
+                }
+            },
+            "required":["contact_id"]
+        }
+    }
+}

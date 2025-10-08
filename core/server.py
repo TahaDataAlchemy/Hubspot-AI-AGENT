@@ -4,19 +4,21 @@ from contextlib import asynccontextmanager
 from fastapi.middleware.cors import CORSMiddleware
 from core.middlewares.middleware import middleware_handler
 
-
-
-
 from config import CONFIG
 from modules.healthcheck.healthcheck_routes import API_ROUTER
+from modules.auth.auth_routes import API_ROUTER as AUTH_ROUTER
 from modules.logviewer.log_viewer_routes import API_ROUTER as LOG_VIEWER_ROUTER
+from modules.crud_ops.contacts.contacts_routes import API_ROUTER as CONTACTS_ROUTER
+from modules.ai_agent.ai_routes import API_ROUTER as AI_ROUTER
 
 
 
 def init_routers(app_: FastAPI) -> None:
     app_.include_router(API_ROUTER)
+    app_.include_router(AUTH_ROUTER)
     app_.include_router(LOG_VIEWER_ROUTER)
-
+    app_.include_router(CONTACTS_ROUTER)
+    app_.include_router(AI_ROUTER)
 
 def make_middleware() -> list[Middleware]:
     middleware = [

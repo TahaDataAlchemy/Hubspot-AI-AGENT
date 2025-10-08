@@ -15,4 +15,7 @@ dependencies = [
     "gunicorn (>=23.0.0,<24.0.0) ; sys_platform == \"linux\"",
     "openai (>=1.78.1,<2.0.0)",
     "api-analytics[fastapi]>=1.2.7",
+    "groq>=0.31.0",
+    "pydantic>=2.11.7",
+    "instructor>=1.10.0",
 ]

@@ -1,0 +1,12 @@
+{
+    "type": "function",
+    "function": {
+        "name": "get_contacts",
+        "description": "Fetch all contact data from the CRM.",
+        "parameters": {
+            "type": "object",
+            "properties": {}
+        },
+        "required": []
+    }
+}
