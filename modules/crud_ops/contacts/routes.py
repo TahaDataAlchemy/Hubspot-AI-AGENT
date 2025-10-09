@@ -1,5 +1,5 @@
-from fastapi import APIRouter
-from modules.crud_ops.contacts.schema import ContactProperties
+from fastapi import APIRouter #type: ignore
+from modules.crud_ops.contacts.schema import ContactProperties,Search_by_query
 import requests
 from typing import Dict,Any
 from modules.auth.token_manager import refresh_access_token,get_valid_access_token
@@ -56,6 +56,7 @@ async def get_contacts():
         data = res.json()
 
     return {"results": all_results}
+
 @contacts_router.patch("/{contact_id}")
 def update_contact(contact_id:str,contact:ContactProperties):
     access_token = get_valid_access_token()
@@ -70,6 +71,7 @@ def update_contact(contact_id:str,contact:ContactProperties):
     if res.status_code == 200:
         return {"message": "Contact updated", "data": res.json()}
     return {"error": res.status_code, "details": res.text}
+
 @contacts_router.post("/create_contact")
 async def create_contact(contact:ContactProperties) ->Dict[str,Any]:
     LOG.info("Into create func")
@@ -99,3 +101,24 @@ def delete_contact(contact_id:str):
     if res.status_code == 204:
         return {"message":"contact deleted"}
     return {"error": res.status_code, "details": res.text}
+
+@contacts_router.post("/search_by_email")
+def search_by_identifier(query:Search_by_query):
+    LOG.info(f"Searching for contant email {query}")
+
+    access_token = get_valid_access_token()
+    if not access_token:
+        return {"error":"No valid token available. Please authorize first"}
+    
+    url = "https://api.hubapi.com/crm/v3/objects/contacts/search"
+    headers = {"Authorization":f"Bearer {access_token}","Content-Type":"application/json"}
+
+    payload = {"query":query.query}
+
+    res = requests.post(url,headers=headers,json=payload)
+    if res.status_code ==200:
+        LOG.info(f"Contact Fetched Successfully: {query.query}")
+        return {"message":"contact fetched","data":res.json()}
+    return {"error": res.status_code, "details": res.text}
+
+
