@@ -1,0 +1,17 @@
+{
+    "type":"function",
+    "function":{
+        "name":"search_by_identifier",
+        "description":"Search a HubSpot contact by an identifier such as email, phone number, or name. Works like HubSpot's global contact search.",
+        "parameters":{
+            "type":"object",
+            "properties":{
+                "query":{
+                    "type":"string",
+                    "description":"The search term to look up a contact (can be an email, phone number, or name)."
+                }
+            },
+            "required":["query"]
+        }
+    }
+}

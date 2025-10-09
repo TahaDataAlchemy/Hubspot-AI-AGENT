@@ -122,7 +122,18 @@ def search_by_identifier(query:Search_by_query):
     url = "https://api.hubapi.com/crm/v3/objects/contacts/search"
     headers = {"Authorization":f"Bearer {access_token}","Content-Type":"application/json"}
 
-    payload = {"query":query.query}
+    payload = {
+        "query": query.query,
+        "properties": [
+            "email",
+            "firstname", 
+            "lastname",
+            "phone",
+            "company",
+            "website",
+            "jobtitle"
+        ]
+    }
 
     res = requests.post(url,headers=headers,json=payload)
     if res.status_code ==200:
