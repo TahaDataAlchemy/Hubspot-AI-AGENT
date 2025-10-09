@@ -20,3 +20,6 @@ class UpdateContactArgs(BaseModel):
 
     class Config:
         extra = "ignore"
+
+class Search_by_query(BaseModel):
+    query:str

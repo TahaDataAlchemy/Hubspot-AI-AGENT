@@ -1,5 +1,5 @@
 import requests
-from modules.crud_ops.contacts.schema import ContactProperties,UpdateContactArgs
+from modules.crud_ops.contacts.schema import ContactProperties,UpdateContactArgs,Search_by_query
 from modules.auth.token_manager import get_valid_access_token,refresh_access_token
 from typing import Dict,Any
 from core.logger.logger import LOG
@@ -112,6 +112,23 @@ def delete_contact(contact_id:str):
 
 
 
+def search_by_identifier(query:Search_by_query):
+    LOG.info(f"Searching for contant email {query}")
+
+    access_token = get_valid_access_token()
+    if not access_token:
+        return {"error":"No valid token available. Please authorize first"}
+    
+    url = "https://api.hubapi.com/crm/v3/objects/contacts/search"
+    headers = {"Authorization":f"Bearer {access_token}","Content-Type":"application/json"}
+
+    payload = {"query":query.query}
+
+    res = requests.post(url,headers=headers,json=payload)
+    if res.status_code ==200:
+        LOG.info(f"Contact Fetched Successfully: {query.query}")
+        return {"message":"contact fetched","data":res.json()}
+    return {"error": res.status_code, "details": res.text}
 
 
 
