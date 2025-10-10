@@ -20,7 +20,6 @@ messages = [
 ]
 
 
-
 def run_convo(user_prompt: str):
     global messages
     
