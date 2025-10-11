@@ -1,17 +1,17 @@
 {
-    "type":"function",
-    "function":{
-        "name":"search_by_identifier",
-        "description":"Search a HubSpot contact by an identifier such as email, phone number, or name. Works like HubSpot's global contact search.",
-        "parameters":{
-            "type":"object",
-            "properties":{
-                "query":{
-                    "type":"string",
-                    "description":"The search term to look up a contact (can be an email, phone number, or name)."
+    "type": "function",
+    "function": {
+        "name": "search_by_identifier",
+        "description": "Search for a HubSpot contact using ONLY a valid email address or phone number. Does NOT accept names or partial information. You must have a complete email (with @ and .) or phone number (minimum 7 digits) to use this tool.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "query": {
+                    "type": "string",
+                    "description": "A valid email address (must contain @ and .) OR a phone number (minimum 7 digits with optional + or - characters). Examples of VALID queries: 'taha@gmail.com', '+92-321-456-987', '3214569870'. Examples of INVALID queries: 'Taha', 'John Doe', 'taha' (these are names and will NOT work)."
                 }
             },
-            "required":["query"]
+            "required": ["query"]
         }
     }
 }
