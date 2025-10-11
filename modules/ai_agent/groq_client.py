@@ -40,6 +40,7 @@ def run_convo(user_prompt: str):
             # LLM call - agent can decide to call tools
             response = client.chat.completions.create(
                 model=MODEL,
+                temperature=0.3,
                 messages=messages,
                 stream=False,
                 tools=tools,
@@ -85,6 +86,35 @@ def run_convo(user_prompt: str):
                 else:
                     function_args = json.loads(arguments_of_func) if arguments_of_func != "null" else {}
                 
+                # VALIDATION FOR search_by_identifier 
+                if function_name == "search_by_identifier":
+                    query_value = function_args.get("query", "")
+                    
+                    # Check if it's a valid email or phone number
+                    is_email = "@" in query_value and "." in query_value
+                    is_phone = sum(c.isdigit() for c in query_value) >= 7
+                    
+                    if not (is_email or is_phone):
+                        LOG.warning(f"Invalid search query rejected: '{query_value}'")
+                        
+                        # Return error to force LLM to ask for proper identifier
+                        function_response = {
+                            "error": "Invalid identifier provided",
+                            "message": f"The query '{query_value}' is not a valid email or phone number. Please ask the user to provide a valid email address or phone number to search for this contact."
+                        }
+                        
+                        # Add the error response to messages
+                        messages.append({
+                            "tool_call_id": tool_call.id,
+                            "role": "tool",
+                            "name": function_name,
+                            "content": json.dumps(function_response)
+                        })
+                        
+                        # Skip the actual function call
+                        continue
+                
+                # Execute the function call
                 try:
                     if model_val:
                         validated_args = model_val(**function_args)
@@ -121,5 +151,3 @@ def run_convo(user_prompt: str):
     except Exception as e:
         LOG.error(f"Error in run_convo: {e}")
         return f"Error processing request: {str(e)}"
-
-
