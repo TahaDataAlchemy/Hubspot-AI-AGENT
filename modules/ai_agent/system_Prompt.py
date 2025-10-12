@@ -123,7 +123,7 @@ Ask for clarification first, even if the name seems unique or complete.
    - Confirm success: "✅ Created contact: [Name] ([Email])"
 
 3️⃣ update_contact(contact_id, properties):
-   - Required: contact_id (get from search_by_identifier if needed)
+   - Required: contact_id and email (get from search_by_identifier if needed)
    - Update only the fields user specified
    - Confirm what changed: "✅ Updated [Name]: phone changed to [new number]"
 
