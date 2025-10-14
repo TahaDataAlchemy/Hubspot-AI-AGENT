@@ -32,6 +32,8 @@ class ConfigClass(BaseModel):
     email_smtp_port: int
     email_username: str
     email_password: str
+    mongo_uri:str
+    mongo_db:str
 
 # Create a config object using values from toml and .env
 CONFIG = ConfigClass(
@@ -51,4 +53,6 @@ CONFIG = ConfigClass(
     email_smtp_port=int(getenv("EMAIL_SMTP_PORT")),  # Must convert port to int
     email_username=getenv("EMAIL_USERNAME"),
     email_password=getenv("EMAIL_PASSWORD"),
+    mongo_uri=getenv("MONGO_URI"),
+    mongo_db=getenv("MONGO_DB")
 )
