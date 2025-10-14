@@ -8,6 +8,8 @@ from modules.ai_agent.intent import get_tools
 from config import CONFIG
 from core.logger.logger import LOG
 import time
+from modules.auth.user_id import get_user_id_from_token
+
 
 client = Groq()
 MODEL = CONFIG.model_name
@@ -23,6 +25,8 @@ messages = [
 def run_convo(user_prompt: str):
     global messages
     
+    user_id = get_user_id_from_token()
+    LOG.info(f"User id : {user_id}")
     messages.append({
         "role": "user", 
         "content": str(user_prompt)
