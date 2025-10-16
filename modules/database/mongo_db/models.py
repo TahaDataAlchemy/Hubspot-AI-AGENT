@@ -21,8 +21,6 @@ class ReactCycle(BaseModel):
 class Message(BaseModel):
     message_id:str = Field(default_factory=lambda:str(uuid.uuid4()))
     user_id:str
-    converstaion_id:str
-
     #User query
     user_query:str
     user_query_timestamp:datetime = Field(default_factory=datetime.now)
