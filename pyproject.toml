@@ -19,5 +19,5 @@ dependencies = [
     "pydantic>=2.11.7",
     "instructor>=1.10.0",
     "redis>=6.4.0",
-    "pymongo>=4.15.3",
+    "pymongo[srv]>=4.15.3",
 ]
