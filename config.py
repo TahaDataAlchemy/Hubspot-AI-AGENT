@@ -34,6 +34,11 @@ class ConfigClass(BaseModel):
     email_password: str
     mongo_uri:str
     mongo_db:str
+    redis_host:str
+    redis_port:str
+    redis_username:str
+    redis_pass:str
+
 
 # Create a config object using values from toml and .env
 CONFIG = ConfigClass(
@@ -54,5 +59,9 @@ CONFIG = ConfigClass(
     email_username=getenv("EMAIL_USERNAME"),
     email_password=getenv("EMAIL_PASSWORD"),
     mongo_uri=getenv("MONGO_URI"),
-    mongo_db=getenv("MONGO_DB")
+    mongo_db=getenv("MONGO_DB"),
+    redis_host = getenv("REDIS_HOST"),
+    redis_port = getenv("REDIS_PORT"),
+    redis_username = getenv("REDIS_USERNAME"),
+    redis_pass = getenv("REDIS_PASSWORD")
 )
