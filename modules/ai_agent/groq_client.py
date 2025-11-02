@@ -11,30 +11,25 @@ import time
 from datetime import datetime
 from modules.auth.user_id import get_user_id_from_token
 from modules.database.mongo_db.mongo_ops import MessageOperations
+from modules.database.redis.redis_client import (redis_client,get_converstaion_key,get_messages_from_redis,save_messages_to_redis)
 
 client = Groq()
 MODEL = CONFIG.model_name
 
-messages = [
-    {
-        "role": "system",
-        "content": system_prompt
-    }
-]
-
-
 def run_convo(user_prompt: str):
-    global messages
     message_ops = MessageOperations()
 
     start_time = time.time()
     user_id = get_user_id_from_token()
     LOG.info(f"User id : {user_id}")
     
+    messages = get_messages_from_redis(user_id)
     messages.append({
         "role": "user", 
         "content": str(user_prompt)
     })
+
+    save_messages_to_redis(user_id,messages)
     
     tools = get_tools()
     total_tokens = 0
@@ -72,6 +67,7 @@ def run_convo(user_prompt: str):
             LOG.info(f"tool calls in iteration {iteration}: {tool_calls}")
             
             messages.append(response_message)
+            save_messages_to_redis(user_id,messages)
 
             cycle_data = {
                 "cycle_number":iteration,
@@ -142,6 +138,7 @@ def run_convo(user_prompt: str):
                             "name": function_name,
                             "content": json.dumps(function_response)
                         })
+                        save_messages_to_redis(user_id,messages)
                         tool_execution_time = int((time.time() - tool_start) * 1000)
                         cycle_data["tool_calls"].append({
                             "tool_call_id": tool_call.id,
@@ -178,7 +175,7 @@ def run_convo(user_prompt: str):
                     "name": function_name,
                     "content": json.dumps(function_response)
                 })
-                
+                save_messages_to_redis(user_id,messages)
                 tool_execution_time = int((time.time() - tool_start) * 1000)
                 cycle_data["tool_calls"].append({
                     "tool_call_id": tool_call.id,
@@ -202,6 +199,8 @@ def run_convo(user_prompt: str):
                 
                 final_response = final_call.choices[0].message.content
                 total_tokens += final_call.usage.total_tokens if hasattr(final_call, 'usage') else 0
+                messages.append({"role":"assistant","content":final_response})
+                save_messages_to_redis(user_id,messages)
                 
                 react_cycles.append({
                     "cycle_number": iteration + 1,
