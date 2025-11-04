@@ -38,6 +38,8 @@ class ConfigClass(BaseModel):
     redis_port:str
     redis_username:str
     redis_pass:str
+    vector_db_url:str
+    vector_db_api:str
 
 
 # Create a config object using values from toml and .env
@@ -63,5 +65,7 @@ CONFIG = ConfigClass(
     redis_host = getenv("REDIS_HOST"),
     redis_port = getenv("REDIS_PORT"),
     redis_username = getenv("REDIS_USERNAME"),
-    redis_pass = getenv("REDIS_PASSWORD")
+    redis_pass = getenv("REDIS_PASSWORD"),
+    vector_db_url=("VECTOR_DB_URL"),
+    vector_db_api=("VECTOR_DB_API")
 )
