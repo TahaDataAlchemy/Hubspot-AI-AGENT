@@ -20,4 +20,6 @@ dependencies = [
     "instructor>=1.10.0",
     "redis>=6.4.0",
     "pymongo[srv]>=4.15.3",
+    "qdrant-client>=1.15.1",
+    "celery>=5.5.3",
 ]
