@@ -40,6 +40,12 @@ class ConfigClass(BaseModel):
     redis_pass:str
     vector_db_url:str
     vector_db_api:str
+    vector_collection:str
+    redis_url:str
+    celery_broker_url:str
+    celery_result_backend:str
+    embeding_model:str
+    
 
 
 # Create a config object using values from toml and .env
@@ -66,6 +72,11 @@ CONFIG = ConfigClass(
     redis_port = getenv("REDIS_PORT"),
     redis_username = getenv("REDIS_USERNAME"),
     redis_pass = getenv("REDIS_PASSWORD"),
-    vector_db_url=("VECTOR_DB_URL"),
-    vector_db_api=("VECTOR_DB_API")
+    vector_db_url=getenv("VECTOR_DB_URL"),
+    vector_db_api=getenv("VECTOR_DB_API"),
+    vector_collection = getenv("QDRANT_COLLECTION"),
+    redis_url=getenv("REDIS_URL"),
+    celery_broker_url=getenv("CELERY_BROKER_URL"),
+    celery_result_backend=getenv("CELERY_RESULT_BACKEND"),
+    embeding_model=getenv("EMBEDING_MODEL")
 )

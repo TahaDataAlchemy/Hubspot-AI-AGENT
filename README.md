@@ -47,3 +47,9 @@ Access the built-in logger service to view application logs:
 
 > 💡 **Tip**: If after clicking the "Fetch Logs" button you see nothing, try switching to incognito mode in your browser.
 
+## Runnig celery
+- **command**: uv run celery -A modules.celery.celery_ini worker --loglevel=info --concurrency=1 --pool=solo
+
+## Running MongoWatcher
+- **command**: uv run python -m modules.celery.watcher_mongo 
+
