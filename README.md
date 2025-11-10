@@ -50,6 +50,6 @@ Access the built-in logger service to view application logs:
 ## Runnig celery
 - **command**: uv run celery -A modules.celery.celery_ini worker --loglevel=info --concurrency=1 --pool=solo
 
-## Running MongoWatcher
-- **command**: uv run python -m modules.celery.watcher_mongo 
+## Running flower
+- **command**: uv run celery -A modules.celery.celery_ini flower
 

@@ -16,4 +16,8 @@ celery_app.conf.update(
     result_serializer='json',
     timezone='UTC',
     enable_utc=True,
+
+    broker_pool_limit=2,  # Max 2 connections to Redis
+    worker_prefetch_multiplier=1,  # Take 1 task at a time
+    worker_max_tasks_per_child=100,  # Restart worker after 100 tasks
 )
