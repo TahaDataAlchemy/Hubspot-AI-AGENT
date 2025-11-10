@@ -12,7 +12,7 @@ from datetime import datetime
 from modules.auth.user_id import get_user_id_from_token
 from modules.database.mongo_db.mongo_ops import MessageOperations
 from modules.database.redis.redis_client import (redis_client,get_converstaion_key,get_messages_from_redis,save_messages_to_redis)
-
+from modules.celery.tasks import embed_and_store_task
 client = Groq()
 MODEL = CONFIG.model_name
 
@@ -233,6 +233,20 @@ def run_convo(user_prompt: str):
     }
 
     message_id = message_ops.save_message(message_data)
+    try:
+        document_for_qdrant = {
+            "_id":message_id,
+            "user_id":user_id,
+            "user_query":user_prompt.query,
+            "ai_response":final_response,
+            "status": status,
+            "created_at": datetime.now().isoformat()
+        }
+        embed_and_store_task.delay(document_for_qdrant)
+        LOG.info(f"Queued vector emebeding task for messages {message_id} and {user_id}")
+    except Exception as e:
+        LOG.error(f"Failed to queue vector embeding: {e}")
+        
 
     return {
         "message_id": message_id,

@@ -23,4 +23,5 @@ dependencies = [
     "qdrant-client>=1.15.1",
     "celery>=5.5.3",
     "sentence-transformers>=5.1.2",
+    "flower>=2.0.1",
 ]
