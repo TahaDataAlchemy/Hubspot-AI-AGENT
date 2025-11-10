@@ -28,8 +28,10 @@ def embed_and_store_task(self,document:dict):
         embeding_vector = embedding_model.encode(text_to_embed).tolist()
         # 3. PREPARE THE POINT FOR QDRANT
         point_id = str(uuid.uuid5(uuid.NAMESPACE_DNS, str(document["_id"]))) # Use MongoDB _id as the unique point ID in Qdrant
-        
+        # point_id = str(document["_id"]) 
+
         payload = {
+            "mongo_id":str(document["_id"]),
             "user_id": document.get("user_id"),
             "user_query": user_query,
             "ai_response": ai_response,
