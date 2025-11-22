@@ -19,15 +19,46 @@ qdrant_cleint = QdrantClient(
 
 collection_name = CONFIG.vector_collection
 
+
 def ensure_qdrant_collection_exists():
+    """
+    Ensure Qdrant collection exists with proper indexing for user_id
+    """
     try:
+        # Try to get the collection
         qdrant_cleint.get_collection(collection_name)
         LOG.info(f"Qdrant collection '{collection_name}' already exists.")
+        
+        # Ensure index exists (even if collection exists)
+        try:
+            qdrant_cleint.create_payload_index(
+                collection_name=collection_name,
+                field_name="user_id",
+                field_schema=models.PayloadSchemaType.KEYWORD
+            )
+            LOG.info("Created index for user_id field")
+        except Exception as e:
+            # Index might already exist, that's okay
+            LOG.info(f"Index for user_id might already exist: {e}")
+            
     except Exception:
         LOG.info(f"Qdrant collection '{collection_name}' not found. Creating it...")
+        
+        # Create the collection
         qdrant_cleint.recreate_collection(
             collection_name=collection_name,
-            vectors_config=models.VectorParams(size=model_dim,distance=models.Distance.COSINE),
+            vectors_config=models.VectorParams(
+                size=model_dim,
+                distance=models.Distance.COSINE
+            ),
         )
         LOG.info(f"Qdrant collection '{collection_name}' created successfully.")
         
+        # Create index for user_id field
+        LOG.info("Creating index for user_id field")
+        qdrant_cleint.create_payload_index(
+            collection_name=collection_name,
+            field_name="user_id",
+            field_schema=models.PayloadSchemaType.KEYWORD
+        )
+        LOG.info("Index created for user_id field successfully")

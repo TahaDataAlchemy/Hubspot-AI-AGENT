@@ -55,5 +55,3 @@ def embed_and_store_task(self,document:dict):
         LOG.info(f"Error processing document {document.get('_id')}: {e}")
         # If the task fails, it will be retried up to `max_retries` times
         raise self.retry(exc=e, countdown=60)
-
-

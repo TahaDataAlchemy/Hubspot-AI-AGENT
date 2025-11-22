@@ -13,17 +13,41 @@ from modules.auth.user_id import get_user_id_from_token
 from modules.database.mongo_db.mongo_ops import MessageOperations
 from modules.database.redis.redis_client import (redis_client,get_converstaion_key,get_messages_from_redis,save_messages_to_redis)
 from modules.celery.tasks import embed_and_store_task
+from modules.database.vector_db.vector_search import VectorSearchService
+from modules.database.vector_db.vector_utility import should_perform_vector_search
 client = Groq()
 MODEL = CONFIG.model_name
 
 def run_convo(user_prompt: str):
     message_ops = MessageOperations()
-
+    vector_search_service = VectorSearchService()
     start_time = time.time()
     user_id = get_user_id_from_token()
     LOG.info(f"User id : {user_id}")
     
     messages = get_messages_from_redis(user_id)
+    redis_has_history = len(messages) > 0
+    # Determine if we need vector search using LLM-based intent detection
+    need_vector_search=should_perform_vector_search(user_prompt.query,messages)
+    print(f"need_vector_search: {need_vector_search}")
+    if need_vector_search:
+        LOG.info("Performing vector search for additional context which is not in current history")
+        vector_results = vector_search_service.search_conversations(
+            query=user_prompt.query,
+            user_id=user_id,
+            limit=20
+        )
+        LOG.info(f"Vector search results {vector_results}")
+        if vector_results:
+            LOG.info(f"Found {len(vector_results)} relevant conversations from vector search")
+            for result in reversed(vector_results): # Reverse to maintain chronological order
+                messages.insert(0,{
+                    "role":"system",
+                    "content":f"Previous conversation context: User asked '{result['user_query']}' and assistant responded '{result['ai_response']}'"
+                })
+
+
+
     messages.append({
         "role": "user", 
         "content": str(user_prompt)
