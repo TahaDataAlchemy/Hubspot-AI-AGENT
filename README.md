@@ -87,3 +87,5 @@ Access the built-in logger service to view application logs:
 ## The Flow of Backend in detailed can be found here
 - **Link**: https://drive.google.com/file/d/1Unuw3HK6Qlbk6sIVYawtEykcq1ZzzVD-/view?usp=sharing
 
+## Flow
+![alt text](<Hubspot AI Agent-1.png>)
