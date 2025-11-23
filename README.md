@@ -2,6 +2,37 @@
 
 A modern, opinionated FastAPI boilerplate for building high-performance APIs with best practices out of the box.
 
+
+
+
+## .env Requirments
+HUBSPOT_CLIENT_ID = 
+HUBSPOT_CLIENT_SECRET = 
+HUBSPOT_REDIRECT_URI = 
+GROQ_API_KEY =
+MODEL_NAME = openai/gpt-oss-20b
+HUBSPOT_BASE_URL = https://api.hubapi.com
+API_BASE_URL =  
+EMAIL_SMTP_SERVER= 
+EMAIL_SMTP_PORT = 
+EMAIL_USERNAME = 
+EMAIL_PASSWORD = 
+MONGO_URI = 
+MONGO_DB = 
+REDIS_HOST = 
+REDIS_PORT = 
+REDIS_USERNAME =
+REDIS_PASSWORD = 
+VECTOR_DB_URL = 
+VECTOR_DB_API = 
+QDRANT_COLLECTION = 
+REDIS_URL=
+CELERY_BROKER_URL=${REDIS_URL}
+CELERY_RESULT_BACKEND=${REDIS_URL}
+EMBEDING_MODEL = all-MiniLM-L6-v2
+
+
+
 ## 🚀 Quick Start
 
 ```bash
