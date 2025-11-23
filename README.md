@@ -53,3 +53,6 @@ Access the built-in logger service to view application logs:
 ## Running flower
 - **command**: uv run celery -A modules.celery.celery_ini flower
 
+## The Flow of Backend in detailed can be found here
+- **Link**: https://drive.google.com/file/d/1Unuw3HK6Qlbk6sIVYawtEykcq1ZzzVD-/view?usp=sharing
+
